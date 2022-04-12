@@ -16,9 +16,8 @@ export const getStaticProps = async ({locale}) => {
   glob.sync(join(graphDir, '*_elb.json')).forEach((file) => {
     const key = parse(file).name;
     const [start, end, who] = key.split('_')
-    //const fileContents = readFileSync(file, 'utf8')
-    //graphs[`${who.toUpperCase()} - ${start}`] = JSON.parse(fileContents)
-    graphs[`${who.toUpperCase()} - ${start}`] = parse(file).base
+    const fileContents = readFileSync(file, 'utf8')
+    graphs[`${who.toUpperCase()} - ${start}`] = JSON.parse(fileContents)
   })
   return {
     props: {
@@ -33,8 +32,7 @@ class elabe extends Component {
     this.plots = []
     const keys=Object.keys(props.graphs)
     keys.forEach(element => {
-      let graph = require("/public/graphs/" + props.graphs[element])
-      const {data, layout} = graph
+      const {data, layout} = props.graphs[element]
       this.plots.push(
       <li key={element}>{element} :
           <DynamicPlot data={data} layout={layout}
