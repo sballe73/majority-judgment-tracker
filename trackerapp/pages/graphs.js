@@ -13,7 +13,7 @@ export const getStaticProps = async ({locale}) => {
   const {readFileSync} = require('fs')
   const glob = require('glob')
 
-  const graphDir = join(process.cwd(), 'data/graphs/')
+  const graphDir = join(process.cwd(), 'public/graphs/')
   const graphs = {}
   glob.sync(join(graphDir, '*.json')).forEach((file) => {
     const key = parse(file).name;

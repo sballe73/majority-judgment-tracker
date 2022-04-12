@@ -42,7 +42,7 @@ export default function Home() {
           <Link href="/graphs">
           <a className="card">
             <h3>Graphs &rarr;</h3>
-            <p>L'ancienne page. Patience au clic, très lourde.</p>
+            <p>L&apos;ancienne page</p>
           </a>
           </Link>          
         </div>
